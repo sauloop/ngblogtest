@@ -16,7 +16,7 @@ import info.pablogiraldo.ngblogtest.entity.AuthenticationBean;
 import info.pablogiraldo.ngblogtest.repository.IArticleRepository;
 
 //@CrossOrigin(origins = "http://localhost:8081")
-@CrossOrigin(origins = "https://ngblogtest.herokuapp.com:9000")
+@CrossOrigin(origins = "https://ngblogtest.herokuapp.com:4200")
 @RestController
 @RequestMapping("/api")
 public class ArticleController {
