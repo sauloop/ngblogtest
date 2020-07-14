@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import info.pablogiraldo.ngblogtest.entity.Article;
+import info.pablogiraldo.ngblogtest.entity.AuthenticationBean;
 import info.pablogiraldo.ngblogtest.repository.IArticleRepository;
 
 @CrossOrigin(origins = "http://localhost:8081")
@@ -37,5 +38,10 @@ public class ArticleController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+	}
+
+	@GetMapping(path = "/basicauth")
+	public AuthenticationBean basicauth() {
+		return new AuthenticationBean("You are authenticated");
 	}
 }
