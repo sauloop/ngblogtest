@@ -23,7 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http.authorizeRequests().antMatchers(resources).permitAll()
-				.antMatchers("/", "/trueknic", "/formsearch", "/search").permitAll().anyRequest()
+				.antMatchers("/", "/trueknic", "/formsearch", "/search", "/api/articles").permitAll().anyRequest()
 				.authenticated().and().formLogin().loginPage("/login").permitAll().and().logout().permitAll();
 
 		http.requiresChannel().requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null).requiresSecure();
