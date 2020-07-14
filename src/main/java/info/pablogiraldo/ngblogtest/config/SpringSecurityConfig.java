@@ -10,12 +10,10 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @EnableWebSecurity
 public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
-	String[] resources = new String[] { "/include/**", "/css/**", "/icons/**", "/img/**", "/js/**", "/layer/**",
-			"/pdf/**", "/public/**","/index.html", "/", "/home", "/login", "/api/articles" };
-
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.httpBasic().and().authorizeRequests().antMatchers(resources)
-				.permitAll().anyRequest().authenticated();
+		http.httpBasic().and().authorizeRequests()
+				.antMatchers("/index.html", "/", "/home", "/login", "/api/articles", "/public/**").permitAll()
+				.anyRequest().authenticated();
 	}
 }
