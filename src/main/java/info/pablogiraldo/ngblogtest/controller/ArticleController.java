@@ -29,7 +29,9 @@ public class ArticleController {
 		try {
 			List<Article> articles = new ArrayList<Article>();
 
-			articleRepository.findAll().forEach(articles::add);
+//			articleRepository.findAll().forEach(articles::add);
+
+			articleRepository.findAllByOrderByIdDesc().forEach(articles::add);
 
 			if (articles.isEmpty()) {
 				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
