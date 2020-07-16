@@ -15,18 +15,19 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().antMatchers(resources).permitAll()
-				.antMatchers("/*.js", "/*.css", "/index.html", "/api/**", "/login", "/logout", "/trueknic", "/admin")
-				.permitAll().anyRequest().authenticated();
+		http.csrf().disable().authorizeRequests().antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+				.antMatchers(resources).permitAll()
+				.antMatchers("/*.js", "/*.css", "/index.html", "/api/**", "/login", "/trueknic", "/admin").permitAll()
+				.anyRequest().authenticated().and()
+				// .formLogin().and()
+				.httpBasic();
 	}
 
 //	@Override
 //	protected void configure(HttpSecurity http) throws Exception {
-//		http.csrf().disable().authorizeRequests()
-//				.antMatchers(HttpMethod.OPTIONS, "/", "/*.js", "/*.css", "/index.html", "/api/**", "/assets/**",
-//						"/login", "/logout", "/trueknic")
-//				.permitAll().anyRequest().authenticated().and()
-//				// .formLogin().and()
-//				.httpBasic();
+//		http.authorizeRequests().antMatchers(resources).permitAll()
+//				.antMatchers("/*.js", "/*.css", "/index.html", "/api/**", "/login", "/logout", "/trueknic", "/admin")
+//				.permitAll().anyRequest().authenticated();
 //	}
+
 }
